@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Types Demonstration - SAKEC WT Exp4</title>
+
+    <link rel="stylesheet" href="stylesexp4.css">
+
+    <style>
+        .internal-demo {
+            background: linear-gradient(135deg, #e8f5e8 0%, #d4f1d4 100%);
+            border: 2px solid #27ae60;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .internal-demo::before {
+            content: "INTERNAL CSS";
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: #27ae60;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .internal-demo h3 {
+            color: #27ae60;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .internal-demo p {
+            color: #2d5016;
+            font-size: 1.1em;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .internal-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .internal-feature {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border-left: 4px solid #27ae60;
+            flex: 1;
+            min-width: 200px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .internal-feature h4 {
+            color: #27ae60;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .internal-feature p {
+            color: #666;
+            font-size: 0.95em;
+            margin: 0;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ecf0f1;
+            vertical-align: top;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .comparison-table tr:hover {
+            background: #e3f2fd;
+            transition: background-color 0.3s ease;
+        }
+
+        .interactive-demo {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border: 2px solid #ff9800;
+        }
+
+        .style-toggle {
+            background: #ff9800;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .style-toggle:hover {
+            background: #f57c00;
+            transform: scale(1.05);
+        }
+
+        .toggle-target {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border: 2px solid #ff9800;
+            transition: all 0.5s ease;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-on-load {
+            animation: slideInLeft 1s ease-out;
+        }
+
+        @media (max-width: 768px) {
+            .internal-features {
+                flex-direction: column;
+            }
+
+            .internal-feature {
+                min-width: auto;
+            }
+
+            .comparison-table {
+                font-size: 14px;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 8px 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="main-header">
+        <h1>CSS Types Demonstration</h1>
+        <p>Shah & Anchor Kutchhi Engineering College - Web Technology Experiment 4</p>
+        <p>internal, external, inline types of css in the same web page</p>
+    </header>
+
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="#external">External CSS</a></li>
+            <li><a href="#internal">Internal CSS</a></li>
+            <li><a href="#inline">Inline CSS</a></li>
+            <li><a href="#comparison">Comparison</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+
+        <section id="external" class="css-section animate-on-load">
+            <div class="section-header">
+                <h2>1. External CSS</h2>
+                <p>Styles defined in a separate .css file and linked to HTML document</p>
+            </div>
+
+            <div class="external-demo">
+                <div class="demo-card">
+                    <h3>🎨 Global Styling</h3>
+                    <p>This entire page layout, header, navigation, and basic styling comes from the external CSS file
+                        <code>styles.css</code>.</p>
+                    <div class="code-block">
+                        <span class="comment">/* In styles.css file */</span>
+                        <span class="selector">body</span> {
+                        <span class="property">font-family</span>: <span class="value">'Segoe UI', Tahoma, Geneva,
+                            Verdana, sans-serif</span>;
+                        <span class="property">background</span>: <span class="value">linear-gradient(135deg, #667eea
+                            0%, #764ba2 100%)</span>;
+                        }
+
+                        <span class="selector">.main-header</span> {
+                        <span class="property">background</span>: <span class="value">linear-gradient(135deg, #2c3e50
+                            0%, #34495e 100%)</span>;
+                        <span class="property">color</span>: <span class="value">white</span>;
+                        <span class="property">padding</span>: <span class="value">40px 20px</span>;
+                        }
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <h3>🔗 How to Link External CSS</h3>
+                    <p>External CSS is linked in the HTML head section using the link element:</p>
+                    <div class="code-block">
+                        <span class="comment">&lt;!-- In HTML head section --&gt;</span>
+                        &lt;<span class="selector">link</span> <span class="property">rel</span>=<span
+                            class="value">"stylesheet"</span> <span class="property">href</span>=<span
+                            class="value">"styles.css"</span>&gt;
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <h3>✅ External CSS Benefits</h3>
+                    <p>Perfect for multiple pages, easy maintenance, and clean separation of content and styling.</p>
+                    <button class="demo-button">Consistent Across Pages</button>
+                    <button class="demo-button">Easy Maintenance</button>
+                    <button class="demo-button">Faster Loading</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="internal" class="css-section">
+            <div class="section-header">
+                <h2>2. Internal CSS</h2>
+                <p>Styles defined within the HTML document using &lt;style&gt; tags</p>
+            </div>
+
+            <div class="internal-demo">
+                <h3>🎯 Page-Specific Styling</h3>
+                <p>This green section and its styling is created using Internal CSS defined in the &lt;style&gt; tag
+                    within this HTML document's head section.</p>
+                <p>Internal CSS is perfect for unique styles that apply only to this specific page.</p>
+
+                <div class="internal-features">
+                    <div class="internal-feature">
+                        <h4>🎨 Custom Design</h4>
+                        <p>Unique styles for specific pages without affecting others</p>
+                    </div>
+                    <div class="internal-feature">
+                        <h4>⚡ No Extra Files</h4>
+                        <p>All styles contained within the HTML document</p>
+                    </div>
+                    <div class="internal-feature">
+                        <h4>🎯 Page-Specific</h4>
+                        <p>Styles that don't need to be shared across multiple pages</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <span class="comment">&lt;!-- Internal CSS in HTML head section --&gt;</span>
+                &lt;<span class="selector">style</span>&gt;
+                <span class="selector">.internal-demo</span> {
+                <span class="property">background</span>: <span class="value">linear-gradient(135deg, #e8f5e8 0%,
+                    #d4f1d4 100%)</span>;
+                <span class="property">border</span>: <span class="value">2px solid #27ae60</span>;
+                <span class="property">padding</span>: <span class="value">25px</span>;
+                <span class="property">border-radius</span>: <span class="value">12px</span>;
+                }
+                &lt;/<span class="selector">style</span>&gt;
+            </div>
+
+            <div class="interactive-demo">
+                <h4>🎮 Interactive Demo - Change Styles with Internal CSS</h4>
+                <p>Click the buttons below to see how Internal CSS can create interactive elements:</p>
+                <button class="style-toggle" onclick="changeBackground()">Change Background</button>
+                <button class="style-toggle" onclick="changeText()">Change Text</button>
+                <button class="style-toggle" onclick="resetStyles()">Reset</button>
+
+                <div id="toggleTarget" class="toggle-target">
+                    <h4>This box uses Internal CSS styling!</h4>
+                    <p>The interactive buttons above modify this element using JavaScript combined with Internal CSS
+                        classes.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="inline" class="css-section">
+            <div class="section-header">
+                <h2>3. Inline CSS</h2>
+                <p>Styles applied directly to HTML elements using the style attribute</p>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #ffe6e6 0%, #ffcccc 100%); 
+                        padding: 25px; 
+                        border-radius: 12px; 
+                        border: 2px solid #e74c3c; 
+                        margin: 20px 0; 
+                        position: relative;">
+
+                <div style="position: absolute; 
+                           top: 10px; 
+                           right: 15px; 
+                           background: #e74c3c; 
+                           color: white; 
+                           padding: 5px 12px; 
+                           border-radius: 15px; 
+                           font-size: 12px; 
+                           font-weight: bold;">
+                    INLINE CSS
+                </div>
+
+                <h3 style="color: #c0392b; 
+                          font-size: 1.8em; 
+                          margin-bottom: 15px; 
+                          text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">
+                    🎨 Direct Element Styling
+                </h3>
+
+                <p style="color: #8b2635; 
+                         font-size: 1.1em; 
+                         line-height: 1.7; 
+                         margin-bottom: 15px;">
+                    This red section is styled entirely using <strong>Inline CSS</strong>. Each element has its styles
+                    defined directly in the style attribute.
+                </p>
+
+                <div style="display: flex; 
+                           flex-wrap: wrap; 
+                           gap: 15px; 
+                           margin-top: 20px;">
+
+                    <div style="background: white; 
+                               padding: 15px 20px; 
+                               border-radius: 8px; 
+                               border-left: 4px solid #e74c3c; 
+                               flex: 1; 
+                               min-width: 200px; 
+                               box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                        <h4 style="color: #e74c3c; 
+                                  margin-bottom: 8px; 
+                                  font-size: 1.1em;">
+                            ⚡ Immediate Effect
+                        </h4>
+                        <p style="color: #666; 
+                                 font-size: 0.95em; 
+                                 margin: 0;">
+                            Changes apply instantly to the specific element
+                        </p>
+                    </div>
+
+                    <div style="background: white; 
+                               padding: 15px 20px; 
+                               border-radius: 8px; 
+                               border-left: 4px solid #e74c3c; 
+                               flex: 1; 
+                               min-width: 200px; 
+                               box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                        <h4 style="color: #e74c3c; 
+                                  margin-bottom: 8px; 
+                                  font-size: 1.1em;">
+                            🎯 Highest Priority
+                        </h4>
+                        <p style="color: #666; 
+                                 font-size: 0.95em; 
+                                 margin: 0;">
+                            Overrides both external and internal CSS
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <span class="comment">&lt;!-- Inline CSS Examples --&gt;</span>
+                &lt;<span class="selector">h1</span> <span class="property">style</span>=<span class="value">"color:
+                    blue; text-align: center; font-size: 2em;"</span>&gt;
+                Inline Styled Heading
+                &lt;/<span class="selector">h1</span>&gt;
+
+                &lt;<span class="selector">p</span> <span class="property">style</span>=<span class="value">"color: red;
+                    background: yellow; padding: 10px; border-radius: 5px;"</span>&gt;
+                This paragraph has inline styling
+                &lt;/<span class="selector">p</span>&gt;
+
+                &lt;<span class="selector">div</span> <span class="property">style</span>=<span
+                    class="value">"background: linear-gradient(45deg, #ff6b6b, #4ecdc4); padding: 20px;"</span>&gt;
+                Gradient background with inline CSS
+                &lt;/<span class="selector">div</span>&gt;
+            </div>
+
+            <h4 style="color: #2c3e50; 
+                      margin: 25px 0 15px 0; 
+                      font-size: 1.3em; 
+                      border-bottom: 2px solid #3498db; 
+                      padding-bottom: 8px;">
+                📝 More Inline CSS Examples:
+            </h4>
+
+            <p style="color: #e67e22; 
+                     font-size: 1.2em; 
+                     font-weight: bold; 
+                     text-align: center; 
+                     background: #fef9e7; 
+                     padding: 15px; 
+                     border: 2px dashed #f39c12; 
+                     border-radius: 10px; 
+                     margin: 15px 0;">
+                This paragraph demonstrates multiple inline CSS properties!
+            </p>
+
+            <div style="display: flex; 
+                       justify-content: space-around; 
+                       flex-wrap: wrap; 
+                       margin: 20px 0;">
+                <button style="background: #9b59b6; 
+                              color: white; 
+                              border: none; 
+                              padding: 12px 24px; 
+                              border-radius: 25px; 
+                              font-size: 16px; 
+                              cursor: pointer; 
+                              margin: 5px;
+                              box-shadow: 0 4px 10px rgba(155, 89, 182, 0.3);">
+                    Purple Button
+                </button>
+
+                <button style="background: linear-gradient(90deg, #2ecc71, #00ff6a); 
+                              color: white; 
+                              border: none; 
+                              padding: 12px 24px; 
+                              border-radius: 25px; 
+                              font-size: 16px; 
+                              cursor: pointer; 
+                              margin: 5px;
+                              box-shadow: 0 4px 10px rgba(46, 204, 113, 0.3);">
+                    Gradient Button
+                </button>
+
+                <button style="background: transparent; 
+                              color: #e74c3c; 
+                              border: 2px solid #e74c3c; 
+                              padding: 12px 24px; 
+                              border-radius: 25px; 
+                              font-size: 16px; 
+                              cursor: pointer; 
+                              margin: 5px;">
+                    Outlined Button
+                </button>
+            </div>
+        </section>
+
+        <section id="comparison" class="css-section">
+            <div class="section-header">
+                <h2>4. CSS Types Comparison</h2>
+                <p>Understanding when to use each type of CSS</p>
+            </div>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Aspect</th>
+                        <th>External CSS</th>
+                        <th>Internal CSS</th>
+                        <th>Inline CSS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Location</strong></td>
+                        <td>Separate .css file</td>
+                        <td>&lt;style&gt; tag in &lt;head&gt;</td>
+                        <td>style attribute in element</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Scope</strong></td>
+                        <td>Multiple HTML pages</td>
+                        <td>Single HTML page</td>
+                        <td>Single HTML element</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Priority</strong></td>
+                        <td>Lowest priority (1)</td>
+                        <td>Medium priority (2)</td>
+                        <td>Highest priority (3)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Maintenance</strong></td>
+                        <td>Easy - centralized</td>
+                        <td>Moderate - page level</td>
+                        <td>Difficult - element level</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Reusability</strong></td>
+                        <td>High - across pages</td>
+                        <td>Medium - within page</td>
+                        <td>Low - single element</td>
+                    </tr>
+                    <tr>
+                        <td><strong>File Size</strong></td>
+                        <td>Cached by browser</td>
+                        <td>Adds to HTML size</td>
+                        <td>Increases HTML size</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Best Use</strong></td>
+                        <td>Site-wide styling</td>
+                        <td>Page-specific styles</td>
+                        <td>Quick fixes, testing</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div style="background: #f0f8ff; 
+                       padding: 20px; 
+                       border-left: 5px solid #3498db; 
+                       border-radius: 5px; 
+                       margin: 20px 0;">
+                <h4 style="color: #2980b9; margin-bottom: 10px;">💡 Best Practice Recommendations:</h4>
+                <ul style="color: #34495e; line-height: 1.8;">
+                    <li><strong>External CSS:</strong> Use for consistent styling across multiple pages</li>
+                    <li><strong>Internal CSS:</strong> Use for page-specific styles and overrides</li>
+                    <li><strong>Inline CSS:</strong> Use sparingly for quick fixes or dynamic styling</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="css-section">
+            <div class="section-header">
+                <h2>📋 Experiment Summary</h2>
+                <p>Key learnings from CSS Types demonstration</p>
+            </div>
+
+            <div style="background: #fff3cd; 
+                       padding: 20px; 
+                       border-left: 4px solid #ffc107; 
+                       border-radius: 5px; 
+                       margin: 20px 0;">
+                <h4 style="color: #856404; margin-bottom: 15px;">🎯 Experiment Objectives Achieved:</h4>
+                <ul style="color: #856404; line-height: 1.8;">
+                    <li><strong>External CSS:</strong> Successfully linked styles.css file for global styling</li>
+                    <li><strong>Internal CSS:</strong> Implemented page-specific styles in &lt;style&gt; tag</li>
+                    <li><strong>Inline CSS:</strong> Applied direct element styling using style attribute</li>
+                    <li><strong>CSS Priority:</strong> Demonstrated cascade and specificity rules</li>
+                    <li><strong>Best Practices:</strong> Showed appropriate use cases for each method</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 CSS Types Demonstration - Shah & Anchor Kutchhi Engineering College</p>
+        <p>Made by <strong><a href="https://hamzamemon.me">Hamza Memon</a></strong> | WT Experiment 4: CSS Types</p>
+        <p>External CSS + Internal CSS + Inline CSS = Complete Styling Solution</p>
+    </footer>
+
+    <script>
+        function changeBackground() {
+            const target = document.getElementById('toggleTarget');
+            target.style.background = 'linear-gradient(45deg, #ff6b6b, #4ecdc4)';
+            target.style.color = 'white';
+        }
+
+        function changeText() {
+            const target = document.getElementById('toggleTarget');
+            target.style.fontSize = '1.2em';
+            target.style.fontWeight = 'bold';
+            target.style.textTransform = 'uppercase';
+        }
+
+        function resetStyles() {
+            const target = document.getElementById('toggleTarget');
+            target.style.background = 'white';
+            target.style.color = 'inherit';
+            target.style.fontSize = 'inherit';
+            target.style.fontWeight = 'inherit';
+            target.style.textTransform = 'inherit';
+        }
+
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+
+</html>

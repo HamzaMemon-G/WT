@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Web Design - SAKEC WT Exp5</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .responsive-title {
+            font-size: 8vw;
+            color: #3498db;
+            text-align: center;
+            margin: 2rem 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            border-radius: 10px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+
+        .section h3 {
+            color: #34495e;
+            margin: 1.5rem 0 1rem 0;
+            font-size: 1.5rem;
+        }
+
+        .section p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .image-demo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .image-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .responsive-img-100 {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .responsive-img-max {
+            max-width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #9b59b6, #e74c3c);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .picture-demo {
+            text-align: center;
+            margin: 2rem 0;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .demo-picture {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            background: linear-gradient(45deg, #f39c12, #e67e22);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem auto;
+        }
+
+        .layout-demo {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .left-sidebar,
+        .right-sidebar {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            width: 20%;
+            text-align: center;
+        }
+
+        .main-content {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            width: 60%;
+            text-align: center;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .code-block .tag {
+            color: #63b3ed;
+        }
+
+        .code-block .attribute {
+            color: #68d391;
+        }
+
+        .code-block .value {
+            color: #fbb6ce;
+        }
+
+        .code-block .comment {
+            color: #a0aec0;
+            font-style: italic;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h4 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .demo-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .demo-button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .demo-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+
+
+        @media screen and (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+            }
+
+            .responsive-title {
+                font-size: 10vw;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+
+            .section h2 {
+                font-size: 1.8rem;
+            }
+
+            .image-demo {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media screen and (max-width: 800px) {
+
+            .layout-demo {
+                flex-direction: column;
+            }
+
+            .left-sidebar,
+            .right-sidebar,
+            .main-content {
+                width: 100%;
+            }
+
+            .container {
+                padding: 1rem 0.5rem;
+            }
+
+            .demo-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .demo-button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .header {
+                padding: 1.5rem 0.5rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .responsive-title {
+                font-size: 12vw;
+                padding: 0.5rem;
+            }
+
+            .section {
+                margin: 1rem 0;
+                padding: 1rem;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+            }
+
+            .code-block {
+                font-size: 12px;
+                padding: 1rem;
+            }
+        }
+
+        @media screen and (min-width: 1200px) {
+            .header h1 {
+                font-size: 3.5rem;
+            }
+
+            .responsive-title {
+                font-size: 6vw;
+            }
+
+            .feature-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <h1>📱 Responsive Web Design</h1>
+        <p>Shah & Anchor Kutchhi Engineering College - Web Technology Experiment 5</p>
+        <p>Designing Webpages that Adapt to All Screen Sizes</p>
+    </header>
+
+    <div class="responsive-title">
+        Responsive!
+    </div>
+
+    <div class="container">
+
+        <section class="section">
+            <h2>🎯 Experiment Aim</h2>
+            <p><strong>Design a responsive webpage that automatically adjusts for different screen sizes and
+                    viewports.</strong></p>
+
+            <h3>📋 Course Outcome</h3>
+            <p>Demonstrate use of HTML and CSS to design attractive static web pages that work on all devices.</p>
+
+            <h3>🎓 Learning Objectives</h3>
+            <p>To describe what is a Responsive Webpage and implement responsive design techniques using HTML and CSS.
+            </p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>📱 Mobile First</h4>
+                    <p>Design starts with mobile devices and scales up to larger screens</p>
+                </div>
+                <div class="feature-card">
+                    <h4>💻 Cross-Device</h4>
+                    <p>Works seamlessly on desktops, tablets, and smartphones</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🔄 Flexible Layout</h4>
+                    <p>Content automatically resizes, hides, shrinks, or enlarges as needed</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>1️⃣ Setting the Viewport</h2>
+            <p>The viewport meta tag is <strong>essential</strong> for responsive design. It gives the browser
+                instructions on how to control the page's dimensions and scaling.</p>
+
+            <div class="code-block">
+                <span class="comment">&lt;!-- Essential viewport meta tag for responsive design --&gt;</span>
+                &lt;<span class="tag">meta</span> <span class="attribute">name</span>=<span
+                    class="value">"viewport"</span> <span class="attribute">content</span>=<span
+                    class="value">"width=device-width, initial-scale=1.0"</span>&gt;
+            </div>
+
+            <p><strong>What it does:</strong></p>
+            <ul style="color: #666; margin-left: 2rem; line-height: 1.8;">
+                <li><code>width=device-width</code> - Sets page width to follow screen width</li>
+                <li><code>initial-scale=1.0</code> - Sets initial zoom level when page loads</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>2️⃣ Responsive Images</h2>
+            <p>Images that scale nicely to fit any browser size using CSS properties.</p>
+
+            <div class="image-demo">
+                <div class="image-card">
+                    <h3>width: 100%</h3>
+                    <div class="responsive-img-100">
+                        Image scales up & down
+                    </div>
+                    <div class="code-block">
+                        &lt;<span class="tag">img</span> <span class="attribute">src</span>=<span
+                            class="value">"image.jpg"</span> <span class="attribute">style</span>=<span
+                            class="value">"width:100%;"</span>&gt;
+                    </div>
+                    <p>Image will be responsive and scale up and down</p>
+                </div>
+
+                <div class="image-card">
+                    <h3>max-width: 100%</h3>
+                    <div class="responsive-img-max">
+                        Never larger than original
+                    </div>
+                    <div class="code-block">
+                        &lt;<span class="tag">img</span> <span class="attribute">src</span>=<span
+                            class="value">"image.jpg"</span> <span class="attribute">style</span>=<span
+                            class="value">"max-width:100%;height:auto;"</span>&gt;
+                    </div>
+                    <p>Image scales down but never larger than original size</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>3️⃣ Picture Element - Different Images for Different Screens</h2>
+            <p>The HTML <code>&lt;picture&gt;</code> element allows you to define different images for different browser
+                window sizes.</p>
+
+            <div class="picture-demo">
+                <div class="demo-picture" id="pictureDemo">
+                    📱 Resize browser to see different content
+                </div>
+                <p><strong>Current Screen:</strong> <span id="screenSize"></span></p>
+            </div>
+
+            <div class="code-block">
+                <span class="comment">&lt;!-- Picture element with multiple sources --&gt;</span>
+                &lt;<span class="tag">picture</span>&gt;
+                &lt;<span class="tag">source</span> <span class="attribute">srcset</span>=<span
+                    class="value">"small-image.jpg"</span> <span class="attribute">media</span>=<span
+                    class="value">"(max-width:600px)"</span>&gt;
+                &lt;<span class="tag">source</span> <span class="attribute">srcset</span>=<span
+                    class="value">"medium-image.jpg"</span> <span class="attribute">media</span>=<span
+                    class="value">"(max-width:1500px)"</span>&gt;
+                &lt;<span class="tag">source</span> <span class="attribute">srcset</span>=<span
+                    class="value">"large-image.jpg"</span>&gt;
+                &lt;<span class="tag">img</span> <span class="attribute">src</span>=<span
+                    class="value">"fallback-image.jpg"</span> <span class="attribute">alt</span>=<span
+                    class="value">"Responsive Image"</span>&gt;
+                &lt;/<span class="tag">picture</span>&gt;
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>4️⃣ Responsive Text Size</h2>
+            <p>Text size can be set with <strong>"vw"</strong> unit (viewport width), so text size follows browser
+                window size.</p>
+
+            <div style="background: #f8f9fa; padding: 2rem; border-radius: 10px; margin: 1rem 0; text-align: center;">
+                <div style="font-size: 6vw; color: #e74c3c; font-weight: bold; margin-bottom: 1rem;">
+                    Hello World
+                </div>
+                <p>This text uses <code>font-size: 6vw</code> - resize your browser to see it change!</p>
+            </div>
+
+            <div class="code-block">
+                <span class="comment">&lt;!-- Responsive text using viewport width --&gt;</span>
+                &lt;<span class="tag">h1</span> <span class="attribute">style</span>=<span
+                    class="value">"font-size:10vw"</span>&gt;Hello World&lt;/<span class="tag">h1</span>&gt;
+            </div>
+
+            <p><strong>Viewport Units:</strong></p>
+            <ul style="color: #666; margin-left: 2rem; line-height: 1.8;">
+                <li><code>vw</code> - Viewport Width (1vw = 1% of viewport width)</li>
+                <li><code>vh</code> - Viewport Height (1vh = 1% of viewport height)</li>
+                <li><code>vmin</code> - Smaller of vw or vh</li>
+                <li><code>vmax</code> - Larger of vw or vh</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>5️⃣ Media Queries - The Heart of Responsive Design</h2>
+            <p>Media queries allow you to define completely different styles for different browser sizes.</p>
+
+            <h3>📱 Live Demo - Three Column Layout</h3>
+            <p><strong>Instructions:</strong> Resize your browser window to see the layout change at 800px breakpoint!
+            </p>
+
+            <div class="layout-demo">
+                <div class="left-sidebar">
+                    <h4>Left Sidebar</h4>
+                    <p>20% width on large screens</p>
+                    <p>100% width on mobile</p>
+                </div>
+                <div class="main-content">
+                    <h4>Main Content</h4>
+                    <p>60% width on large screens</p>
+                    <p>100% width on mobile</p>
+                </div>
+                <div class="right-sidebar">
+                    <h4>Right Sidebar</h4>
+                    <p>20% width on large screens</p>
+                    <p>100% width on mobile</p>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <span class="comment">/* CSS for responsive three-column layout */</span>
+                <span class="tag">.left, .right</span> {
+                <span class="attribute">float</span>: <span class="value">left</span>;
+                <span class="attribute">width</span>: <span class="value">20%</span>; <span class="comment">/* Default
+                    width */</span>
+                }
+
+                <span class="tag">.main</span> {
+                <span class="attribute">float</span>: <span class="value">left</span>;
+                <span class="attribute">width</span>: <span class="value">60%</span>; <span class="comment">/* Default
+                    width */</span>
+                }
+
+                <span class="comment">/* Media query for screens 800px and smaller */</span>
+                <span class="tag">@media screen and (max-width: 800px)</span> {
+                <span class="tag">.left, .main, .right</span> {
+                <span class="attribute">width</span>: <span class="value">100%</span>; <span class="comment">/* Full
+                    width on mobile */</span>
+                }
+                }
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>6️⃣ Common Responsive Breakpoints</h2>
+            <p>Standard breakpoints used in this webpage:</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>📱 Mobile</h4>
+                    <p><strong>480px and below</strong></p>
+                    <p>Single column, larger text, simplified navigation</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📱 Large Mobile</h4>
+                    <p><strong>481px - 800px</strong></p>
+                    <p>Layout starts stacking, responsive images adapt</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📱 Tablet</h4>
+                    <p><strong>801px - 1199px</strong></p>
+                    <p>Two-column layouts, medium-sized elements</p>
+                </div>
+                <div class="feature-card">
+                    <h4>💻 Desktop</h4>
+                    <p><strong>1200px and above</strong></p>
+                    <p>Full multi-column layouts, all features visible</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🎮 Test Responsive Features</h2>
+            <p>Try these buttons to simulate different screen sizes (or manually resize your browser):</p>
+
+            <div class="demo-buttons">
+                <button class="demo-button" onclick="simulateScreen('mobile')">📱 Mobile View</button>
+                <button class="demo-button" onclick="simulateScreen('tablet')">📱 Tablet View</button>
+                <button class="demo-button" onclick="simulateScreen('desktop')">💻 Desktop View</button>
+                <button class="demo-button" onclick="resetView()">🔄 Reset</button>
+            </div>
+
+            <div id="demo-info"
+                style="background: #e3f2fd; padding: 1rem; border-radius: 8px; text-align: center; margin-top: 1rem;">
+                <p>Current viewport: <span id="current-width"></span>px wide</p>
+                <p>Device type: <span id="device-type"></span></p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>✅ Responsive Design Best Practices</h2>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>📱 Mobile First</h4>
+                    <p>Start designing for mobile, then enhance for larger screens using min-width media queries</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🎯 Content Priority</h4>
+                    <p>Most important content should be visible on smallest screens first</p>
+                </div>
+                <div class="feature-card">
+                    <h4>⚡ Performance</h4>
+                    <p>Use appropriate image sizes and optimize for faster mobile loading</p>
+                </div>
+                <div class="feature-card">
+                    <h4>👆 Touch Friendly</h4>
+                    <p>Buttons and links should be large enough for finger taps (44px minimum)</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🔍 Testing</h4>
+                    <p>Test on real devices and use browser developer tools for simulation</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📐 Flexible Units</h4>
+                    <p>Use relative units (%, em, rem, vw, vh) instead of fixed pixels when possible</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 Responsive Web Design Demonstration</p>
+        <p>Shah & Anchor Kutchhi Engineering College - Computer Engineering Department</p>
+        <p>Made by <strong><a href="https://hamzamemon.me" style="color: #3498db;">Hamza Memon</a></strong> | WT
+            Experiment 5: Responsive Design</p>
+        <p>📱💻📟 One Web, All Devices 📟💻📱</p>
+    </footer>
+
+    <script>
+        function updateViewportInfo() {
+            const width = window.innerWidth;
+            const widthSpan = document.getElementById('current-width');
+            const deviceSpan = document.getElementById('device-type');
+            const screenSizeSpan = document.getElementById('screenSize');
+            const pictureDemo = document.getElementById('pictureDemo');
+
+            if (widthSpan) widthSpan.textContent = width;
+
+            let deviceType = '';
+            let screenSize = '';
+            let pictureContent = '';
+
+            if (width <= 480) {
+                deviceType = 'Small Mobile';
+                screenSize = 'Small Mobile (≤480px)';
+                pictureContent = '📱 Small Mobile Image';
+            } else if (width <= 800) {
+                deviceType = 'Mobile/Large Mobile';
+                screenSize = 'Mobile (481-800px)';
+                pictureContent = '📱 Mobile Image';
+            } else if (width <= 1199) {
+                deviceType = 'Tablet';
+                screenSize = 'Tablet (801-1199px)';
+                pictureContent = '📱 Tablet Image';
+            } else {
+                deviceType = 'Desktop';
+                screenSize = 'Desktop (≥1200px)';
+                pictureContent = '💻 Desktop Image';
+            }
+
+            if (deviceSpan) deviceSpan.textContent = deviceType;
+            if (screenSizeSpan) screenSizeSpan.textContent = screenSize;
+            if (pictureDemo) pictureDemo.textContent = pictureContent;
+        }
+
+        function simulateScreen(type) {
+            let width;
+            switch (type) {
+                case 'mobile':
+                    width = 375;
+                    break;
+                case 'tablet':
+                    width = 768;
+                    break;
+                case 'desktop':
+                    width = 1200;
+                    break;
+            }
+
+            alert(`In a real scenario, this screen would be ${width}px wide.\nTry resizing your browser window manually to see the responsive design in action!`);
+        }
+
+        function resetView() {
+            alert('Browser window reset to original size.\nManually resize your browser window to test responsiveness!');
+        }
+
+        window.addEventListener('load', updateViewportInfo);
+        window.addEventListener('resize', updateViewportInfo);
+
+        updateViewportInfo();
+    </script>
+</body>
+
+</html>
