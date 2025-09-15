@@ -17,8 +17,7 @@ This repository contains practical experiments and projects for the **Web Techno
 
 ```
 WT/
-├── exp1.1.html              # HTML Fundamentals
-├── exp1.1-word-formatted.html   # Word-friendly version
+├── exp1.html              # HTML Fundamentals
 ├── exp2.html                # Tables and Lists
 ├── exp3.html                # Forms and Input Elements
 ├── exp4.html                # CSS Types (External, Internal, Inline)
