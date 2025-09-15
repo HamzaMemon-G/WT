@@ -21,7 +21,7 @@ WT/
 ├── exp2.html                # Tables and Lists
 ├── exp3.html                # Forms and Input Elements
 ├── exp4.html                # CSS Types (External, Internal, Inline)
-├── styles.css               # External CSS file
+├── stylesep4.css               # External CSS file
 ├── Exp5.html                # Responsive Web Design
 └── readme.md                # This file
 ```
