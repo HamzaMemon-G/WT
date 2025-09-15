@@ -1,9 +1,9 @@
-# Web Technology (WT) Bridge Course 🌐
+# Web Technology (WT) Bridge Course
 
 
 ## Course Overview
 
-This repository contains practical experiments and projects for the **Web Technology Bridge Course** designed for Computer Engineering students at SAKEC. The course focuses on building foundational skills in web development using HTML, CSS, and JavaScript.
+This repository contains practical experiments and projects for the **Web Technology Bridge Course** designed for students at SAKEC. The course focuses on building foundational skills in web development using HTML, CSS, and JavaScript.
 
 ## Course Objectives
 
